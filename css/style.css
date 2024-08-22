@@ -1,0 +1,417 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize ;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+:root{
+    --dark-color: #212529;
+    --second-bg-color: rgb(138 134 134 / 30%);
+    --main-text-color: white;
+    --second-text-color: whitesmoke;
+    --main-border-radius : 15px
+}
+/* -------------------------------------------------------------------------- */
+.sec-title{
+    /* background-color: aqua; */
+    padding: 5% 0 2%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sec-title h2{
+    text-transform: uppercase;
+    font-weight:bold ;
+    font-size: 5rem;
+    color: #2222225a;
+    letter-spacing: 3px;
+}
+.sec-title h3{
+    position: absolute;
+    text-transform: uppercase;
+
+    font-weight:bold ;
+    font-size: 2.5rem;
+    color: rgb(184, 19, 19);
+    color: #bb2d3b;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 scrollToUp                                 */
+/* -------------------------------------------------------------------------- */
+#up-icon{
+    /* background-color: red; */
+    color:#811c26;
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+    font-size: 20px;
+    z-index: 10;
+    cursor: pointer;
+    display: none;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   navbar                                   */
+/* -------------------------------------------------------------------------- */
+#navbar li{
+    padding: 0 .75rem;
+}
+#navbar li #contact-us{
+    color: white;
+    font-weight: 500;
+    display: inline-block;
+    padding: 10px 15px;
+}
+/* -------------------------------------------------------------------------- */
+/*                                 home page 1                                */
+/* -------------------------------------------------------------------------- */
+#home .row{
+    padding-top: 0rem;
+    background-color: var(--dark-color);
+    background-image: url(../imgs/bg-4.jpg);
+    height: 100vh;
+    background-position: 0 80% ;
+    background-size: 100% 120%;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    text-align: center;
+}
+#home .row h1{
+    color: var(--main-text-color);
+    /* background-color: #0a63bc; */
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(calc(-50% - 50%));
+    top: 20%;
+}
+#home .row p{
+    color: var(--second-text-color);
+    max-width: 85%; 
+    margin: auto;
+    text-transform: none;
+}
+#home .row p a{
+    display: block;
+    color: rgba(0, 255, 255, 0.62);
+    font-size: 20px;
+}
+#home .row #custom-video{
+    position: absolute;
+    left: 31%;
+    bottom: 17%;
+    width: 40%;
+    height: 45%;
+    border-radius: var(--main-border-radius);
+} 
+#animat-word{
+    position: relative;
+}
+#animat-word::after{
+    content:"";
+    position: absolute;
+    left: 12px;
+    width: 160px;
+    text-align: start;
+    overflow:hidden ;
+    animation: word 2s ease-in-out infinite alternate; 
+}
+
+@keyframes word {
+    0% {
+        width: 160px;
+        content:"teachers";
+    }
+    50% {
+        width: 1px;
+    }
+    51% {
+        width: 1px;
+    }
+    
+    100% {
+        content:"coursers";
+        color: rgb(17, 225, 225);
+        width: 160px;
+    }
+}
+
+    /* 3% {content: "teacher|"; }
+    6% {content: "teache|"; }
+    9% {content: "teach|"; }
+    12% {content: "teac|"; }
+    15% {content: "tea|"; }
+    18% {content: "te|"; }
+    21% {content: "t|"; }
+    24% {content: "|"; }
+    27% {content: "c|"; }
+    33% {content: "co|"; }
+    36% {content: "cou|"; }
+    39% {content: "cour|"; }
+    42% {content: "course|"; }
+    45% {content: "courses|"; }
+    48% {content: "course|"; }
+    51% {content: "cours|"; }
+    54% {content: "cour|"; }
+    57% {content: "cou|"; }
+    60% {content: "co|"; }
+    63% {content: "c|"; }
+    66% {content: "|"; }
+    69% {content: "t|"; }
+    72% {content: "te|"; }
+    75% {content: "tea|"; }
+    78% {content: "teac|"; }
+    91% {content: "teach|"; }
+    94% {content: "teache|"; }
+    97% {content: "teacher|"; }
+    97% {content: "teachers|"; 
+        100% {content: "|"; }
+    } */
+
+/* -------------------------------------------------------------------------- */
+/*                             Home  about section                            */
+/* -------------------------------------------------------------------------- */
+#about{
+    /* background-image: linear-gradient(#32393f, var(--dark-color)); */
+    /* background-color: rgba(130, 125, 125, 0.475); */
+    background-color : var(--second-bg-color)
+}
+#about p{
+    text-align: center;
+    text-transform: none;
+    color: rgba(0, 0, 0, 0.699);
+    font-size: 1.3em;
+    font-weight:500 ;
+    /* font-family: sans-serif; */
+}
+@media screen and (max-width : 768px) {
+    #about p{
+        color: rgb(0, 0, 0);
+        font-size: 1.1em;
+    }
+}
+#about .statistics .item{
+    padding: 4% 2%;
+}
+#about .statistics .item .counter{
+    border-radius: var(--main-border-radius);
+    background-color: var(--dark-color);
+    padding: 20%;
+    /* text-align: center; */
+    color: var(--main-text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#about .statistics .item .counter h5{
+    color: var(--main-text-color);
+    font-weight: bold;
+    font-size: large;
+}
+#about .statistics .item .counter p{
+    color: var(--main-text-color);
+    font-weight: bold;
+    font-size: large;
+}
+/* -------------------------------------------------------------------------- */
+/*                            home teachers section                           */
+/* -------------------------------------------------------------------------- */
+#teacher{
+    /* background-color: white; */
+    background-image: linear-gradient(#32393f, var(--dark-color));
+    
+}
+#teacher .item{
+    flex-flow: row;
+    padding: 1% 2% ;
+}
+#teacher .item .item-content{
+    background-color: whitesmoke;
+    border-radius: var(--main-border-radius);
+    box-shadow: 1px 2px 5px  gray;
+    transition: all .5s;
+    position: relative;
+}
+#teacher .item .item-content:hover{
+    filter: drop-shadow(8px 8px 5px gray);
+}
+#teacher .item .item-content:hover figure{
+    left: 0%;
+    top: 0;
+    transition: all 1s 0.3s;
+}
+#teacher .item .item-content:hover .item-up::after{
+    right:0%;
+}
+
+/* ------------------------- */
+#teacher .item .item-content .item-up{
+    position: relative;
+    padding:  1.5rem;
+    border-top-right-radius:var(--main-border-radius);
+    border-top-left-radius: var(--main-border-radius);
+    overflow: hidden;
+}
+#teacher .item-up::after{
+    content: "";
+    position: absolute;
+    top:0%;
+    right:100%;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius:var(--main-border-radius);
+    border-top-left-radius: var(--main-border-radius);
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all .5s;
+    z-index: 2; 
+}
+#teacher figure{
+    transition: all 1s 0s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+#teacher .item img{
+    width: 100%;
+    height: 100%;
+    border-top-right-radius:var(--main-border-radius);
+    border-top-left-radius: var(--main-border-radius);
+}
+#teacher .item-up  h2{
+    text-align: center;
+    height: 70px;
+    /* background-color: rebeccapurple; */
+}
+@media screen and (max-width : 767px) {
+    #teacher .item-up  h2{
+        text-align: center;
+        height: unset;
+    }
+}
+#teacher .item-up  p{
+    height: 5rem ;
+    font-weight: 500;
+}
+
+/* ----------------------------- */
+#teacher .item-down{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    cursor : pointer;
+}
+#teacher .item-down p{ 
+    text-transform: uppercase;
+    font-weight: 800;
+    color:#0d6efd
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                               pagination-bar                               */
+/* -------------------------------------------------------------------------- */
+#pagination-bar{
+    /* background-color: rgba(130, 125, 125, 0.475); */
+    background-color : var(--second-bg-color)
+}
+#pagination-bar .container{
+    padding:  .5rem 5rem;
+    display: flex;
+    gap: 20px;
+    justify-content: center !important;
+}
+#pagination-bar .container button{
+    color: var(--main-text-color);
+    background-color: #0d6efd;
+    font-weight: 700;
+}
+.pagination-button{
+    background-color: var(--dark-color) !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   footer                                   */
+/* -------------------------------------------------------------------------- */
+#footer{
+    background-color: rgb(197, 158, 158);
+    background-color: var(--dark-color);
+}
+#footer h2{
+    padding-bottom:20px ;
+}
+#footer .row{
+    color: white;
+}
+#footer .logo{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    border-right: 1px rgba(255, 255, 255, 0.1) solid;
+}
+#footer .logo h2{
+    padding: 0;
+    font-weight: 900;
+    font-size: xx-large;
+    letter-spacing: 3px;
+    height: auto;
+}
+/* --------------- */
+#footer .mail{
+    padding: 1.5rem 0 0 0;
+    text-align: center;
+    border-right: 1px rgba(255, 255, 255, 0.1) solid;
+}
+/* ------------------- */
+#footer .contact-us{
+    text-align: center;
+    padding: 1.5rem 0 0 0;
+}
+#footer .contact-us ul{
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    gap: 20px;
+}
+#hr{
+    color: white;
+    height: 2px;
+}
+#footer .mail #Email{
+    padding: 10px 20px;
+    transition: all .5s;
+    font-weight: 500;
+    font-size: larger;
+}
+#footer .mail #Email:hover{
+    transform: scale(1.1);
+    padding: 10px 20px;
+}
+
+#footer .fa-linkedin{
+    color: #0a63bc;
+}
+#footer .fa-whatsapp{
+    color: #4dff00;
+}
+#footer #copyright{
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+#footer #copyright a:any-link{
+    color: wheat;
+    text-decoration: none;
+}

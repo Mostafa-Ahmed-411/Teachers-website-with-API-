@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <title>My Teacher</title>
+    </head>
+    <body>
+
+<!-- ----------------------------------------------------------------------- -->
+<!--                               scrollToUp                                -->
+<!-- ----------------------------------------------------------------------- -->
+<div id="up-icon">
+    <i class="fa-solid fa-circle-arrow-up fa-2xl"></i>
+</div>
+<!-- ----------------------------------------------------------------------- -->
+<!--                                 navbar                                  -->
+<!-- ----------------------------------------------------------------------- -->
+<nav id="navbar" class="navbar navbar-expand-md  px-5 py-2 py-md-3 ">
+<!-- <nav id="navbar" class="navbar navbar-expand-md  px-5 py-2 py-md-3  navbar-dark  bg-dark"> -->
+    <div class="navbar fixed-top  navbar-dark  bg-dark  px-5 py-2 py-md-3 "">
+        <div class="container-fluid d-flex align-items-baseline " >
+            
+            <div class="navbar-brand ">
+                <a class="nav-link active" aria-current="page" href="#">Teaching</a>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2  mb-lg-0 d-flex ">
+                    <li class="nav-item ">
+                        <a class="nav-link active text-main " aria-current="page" href="#home">home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">about</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#teacher">teachers</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a  id="contact-us" class="nav-link btn btn-danger" href="#footer">contact us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- ----------------------------------------------------------------------- -->
+<!--                               home page 1                               -->
+<!-- ----------------------------------------------------------------------- -->
+<section id="home" class="">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="content">
+                <h1>watch our <span id="animat-word"></span></h1>
+            </div>
+            
+            <iframe id="custom-video"
+                src="https://www.youtube.com/embed/UCFg9bcW7Bk" 
+                title="Teaching Methods for Inspiring the Students of the Future | Joe Ruhl | TEDxLafayette"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</section>
+<!-- ----------------------------------------------------------------------- -->
+<!--                                 Home  about section                     -->
+<!-- ----------------------------------------------------------------------- -->
+<section id="about" class="">
+    <div class="container">
+        <div class="row">
+            <div class="sec-title ">
+                <h2>about</h2>
+                <h3>about</h3>
+            </div>
+            <p >Our dedicated teachers provide personalized, high-quality education through private courses tailored to each student's needs. Whether you're advancing in a subject or seeking one-on-one tutoring, our wide range of courses helps you achieve your academic goals.
+            </p>
+        </div>
+            
+        <div class="row statistics">
+            <div class="col-4 item">
+                <div class="counter">
+                    <p>+<span id="course-counter" target-value="256" >0</span></p>
+                    <h5>course</h5>
+                </div>
+            </div>
+            <div class="col-4 item">
+                <div class="counter">
+                    <p>+<span id="teacher-counter" target-value="52">0</span></p>
+                    <h5>teacher</h5>
+                </div>
+            </div>
+            <div class="col-4 item">
+                <div class="counter">
+                    <p>+<span id="student-counter" target-value="10568">0</span></p>
+                    <h5>student</h5>
+                </div>
+            </div>
+        </div> 
+    </div>
+</section>
+<!-- ----------------------------------------------------------------------- -->
+<!--                          home teachers section                          -->
+<!-- ----------------------------------------------------------------------- -->
+<section id="teacher" class="">
+    <div class="container">
+        <div class="row ">
+            <div class="sec-title">
+                <h2>teacher</h2>
+                <h3>teacher</h3>
+            </div>
+        </div>
+            <!-- <a href="#">Explore our qualified educators to find your perfect match.</a> -->
+            <div class="row" id="show-teachers-list">
+                <!--  
+                <div class="col-md-4 item">
+                    <div class="item-content">
+                        <div class="item-up">
+                            <figure>
+                                <img src="./imgs/1-image.jpg" alt="">
+                            </figure>
+                            <h2>mostafa ahmed</h2>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias enim ea ut aliquam
+                                optio nihil inventore voluptatem tempore. Deserunt, corporis!.</p>
+                        </div>
+                        <div class="item-down">
+                            <p>start now</p>
+                            <p><i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 item">
+                    <div class="item-content">
+                        <div class="item-up">
+                            <figure>
+                                <img src="./imgs/1-image.jpg" alt="">
+                            </figure>
+                            <h2>mostafa ahmed</h2>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias enim ea ut aliquam
+                                optio nihil inventore voluptatem tempore. Deserunt, corporis!.</p>
+                        </div>
+                        <div class="item-down">
+                            <p>start now</p>
+                            <p><i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 item">
+                    <div class="item-content">
+                        <div class="item-up">
+                            <figure>
+                                <img src="./imgs/1-image.jpg" alt="">
+                            </figure>
+                            <h2>mostafa ahmed</h2>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias enim ea ut aliquam
+                                optio nihil inventore voluptatem tempore. Deserunt, corporis!.</p>
+                        </div>
+                        <div class="item-down">
+                            <p>start now</p>
+                            <p><i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 item">
+                    <div class="item-content">
+                        <div class="item-up">
+                            <figure>
+                                <img src="./imgs/1-image.jpg" alt="">
+                            </figure>
+                            <h2>mostafa ahmed</h2>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias enim ea ut aliquam
+                                optio nihil inventore voluptatem tempore. Deserunt, corporis!.</p>
+                        </div>
+                        <div class="item-down">
+                            <p>start now</p>
+                            <p><i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 item">
+                    <div class="item-content">
+                        <div class="item-up">
+                            <figure>
+                                <img src="./imgs/1-image.jpg" alt="">
+                            </figure>
+                            <h2>mostafa ahmed</h2>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias enim ea ut aliquam
+                                optio nihil inventore voluptatem tempore. Deserunt, corporis!.</p>
+                        </div>
+                        <div class="item-down">
+                            <p>start now</p>
+                            <p><i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 item">
+                    <div class="item-content">
+                        <div class="item-up">
+                            <figure>
+                                <img src="./imgs/1-image.jpg" alt="">
+                            </figure>
+                            <h2>mostafa ahmed</h2>
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias enim ea ut aliquam
+                                optio nihil inventore voluptatem tempore. Deserunt, corporis!.</p>
+                        </div>
+                        <div class="item-down">
+                            <p>start now</p>
+                            <p><i class="fa-solid fa-arrow-right"></i></p>
+                        </div>
+                    </div>
+                </div>
+                -->
+        </div>
+    </div>
+</section>
+<!-- ----------------------------------------------------------------------- -->
+<!--                             pagination-bar                              -->
+<!-- ----------------------------------------------------------------------- -->
+<section id="pagination-bar" class="">
+    <div class="container">
+            <button id="page1" class="btn bg-danger" value="1"> 1</button>
+            <button id="page2" class="btn btn-2 bg-danger" value="2"> 2</button>
+    </div>
+</section>
+<!-- ----------------------------------------------------------------------- -->
+<!--                                 footer                                  -->
+<!-- ----------------------------------------------------------------------- -->
+<footer id="footer" class="">
+    <div class="container">
+        <div class="row bg-dangere">
+            <div class="col-md-3 logo justify-content-center justify-content-md-start py-5">
+                <h2>
+                    teaching
+                </h2>
+            </div>
+            
+            <div class="col-md-4 mail">
+                <h2>E-mail</h2>
+                <a class="btn btn-danger " id="Email" href="mostafa.ahmed.50m@gmail.com">email us</a>
+            </div>
+            
+            <div class="col-md-4 contact-us">
+                <h2>contact us</h2>
+                <ul >
+                    <li><a href="https://www.facebook.com/earldrsh/" title="facebook"><i class="fa-brands fa-facebook fa-2xl"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/mostafa-ahmed-drsh411/" title="linkedin"><i class="fa-brands fa-linkedin fa-2xl"></i></a></li>
+                    <li><a href=""><i class="fa-brands fa-whatsapp fa-2xl" title="whatsapp"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr id="hr">
+    <p id="copyright">copyright  &#169; 2024 by &nbsp;<a href="mostafa.ahmed.50m@gmail.com"> EARL Drsh</a></p>
+</footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html

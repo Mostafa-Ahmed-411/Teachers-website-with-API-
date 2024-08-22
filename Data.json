@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "name": "George Bluth",
+    "job_title": "Mathematics Teacher",
+    "brief": "George  has been teaching math for over 15 years, specializing in algebra and calculus.",
+    "topics": [
+      "Algebra",
+      "Calculus",
+      "Geometry",
+      "Trigonometry"
+    ],
+    "about": "George Bluth is an experienced Mathematics Teacher with over 15 years of teaching algebra, calculus, and other advanced mathematical topics. He currently works as a senior math instructor at XYZ High School, where he is known for his innovative teaching methods. John's most notable course, 'Mastering Algebra,' has helped countless students overcome their fear of algebra and excel in their studies. His passion for math and commitment to student success make him a respected figure in education.",
+    "youtube_link": "https://www.youtube.com/embed/m09KpwyGAN4"
+  },
+  {
+    "id": 2,
+    "name": "Janet Weaver",
+    "job_title": "English Literature Teacher",
+    "brief": "Janet  specializes in teaching English literature, focusing on classical and contemporary works.",
+    "topics": [
+      "Shakespeare",
+      "Modern Literature",
+      "Creative Writing",
+      "Poetry"
+    ],
+    "about": "Janet Weaver is a dedicated English Literature Teacher with a deep love for classical and modern literature. With over a decade of teaching experience, Jane has developed a reputation for making literature accessible and enjoyable for her students. She is currently the head of the English department at ABC Academy. Her renowned course on Shakespeare's plays is particularly popular, offering students a fresh perspective on the Bard's timeless works.",
+    "youtube_link": "https://www.youtube.com/embed/q28W7N6Th58"
+  },
+  {
+    "id": 3,
+    "name": "Emma Wong",
+    "job_title": "History Teacher",
+    "brief": "Emma brings history to life, focusing on modern and ancient civilizations.",
+    "topics": [
+      "Ancient Civilizations",
+      "World Wars",
+      "Modern History",
+      "Political Science"
+    ],
+    "about": "Emma Wong is a passionate History Teacher with extensive knowledge of both ancient and modern history. Over the past 12 years, Michael has taught at several prestigious schools, currently holding a senior teaching position at DEF High School. His course on Ancient Civilizations has been highly acclaimed, offering students a comprehensive understanding of the world's earliest societies. Michael's engaging teaching style and in-depth knowledge make his classes a favorite among students.",
+    "youtube_link": "https://www.youtube.com/embed/ZRTNwXADgU0"
+  },
+  {
+    "id": 4,
+    "name": "Eve Holt",
+    "job_title": "Science Teacher",
+    "brief": "Eve specializes in biology and chemistry, with a passion for environmental science.",
+    "topics": [
+      "Biology",
+      "Chemistry",
+      "Environmental Science",
+      "Genetics"
+    ],
+    "about": "Eve Holt is a dynamic Science Teacher with a focus on biology and chemistry. With over 10 years of experience, she currently teaches at GHI School, where she inspires students to explore the natural world. Emily's course on environmental science has gained significant attention for its practical approach to understanding and addressing environmental issues. Her enthusiasm for science and dedication to student learning are evident in every lesson she teaches.",
+    "youtube_link": "https://www.youtube.com/embed/oM2JlxAGyBQ"
+  },
+  {
+    "id": 5,
+    "name": "Charles Morris",
+    "job_title": "Computer Science Teacher",
+    "brief": "Charles is a seasoned computer science teacher with a focus on programming and web development.",
+    "topics": [
+      "Programming",
+      "Web Development",
+      "Algorithms",
+      "Cybersecurity"
+    ],
+    "about": "Charles Morris is an expert Computer Science Teacher with over 8 years of experience in teaching programming and web development. Currently working at JKL Technical Institute, David has helped many students launch their careers in tech. His course on web development is particularly popular, providing students with hands-on experience in creating and managing websites. David's deep knowledge and practical approach make him an invaluable resource for students pursuing a career in computer science.",
+    "youtube_link": "https://www.youtube.com/embed/RzWB5jL5RX0"
+  },
+  {
+    "id": 6,
+    "name": "Tracey Tracey",
+    "job_title": "Art Teacher",
+    "brief": "Tracey inspires creativity through her art classes, focusing on painting and sculpture.",
+    "topics": [
+      "Painting",
+      "Sculpture",
+      "Art History",
+      "Graphic Design"
+    ],
+    "about": "Tracey Tracey is a talented Art Teacher with a passion for painting and sculpture. She has been teaching for over 7 years at MNO School of Arts, where she encourages students to explore their creative potential. Laura's course on modern painting techniques has been widely praised for its innovative approach and has inspired many students to pursue art as a career. Her dedication to fostering creativity in her students is reflected in the success and enthusiasm they show in their work.",
+    "youtube_link": "https://www.youtube.com/embed/so8sB25IL4o"
+  },
+  {
+    "id": 7,
+    "name": "Michael Lawson",
+    "job_title": "Physical Education Teacher",
+    "brief": "Michael promotes health and fitness through engaging physical education classes.",
+    "topics": [
+      "Fitness",
+      "Team Sports",
+      "Nutrition",
+      "Mental Health"
+    ],
+    "about": "Michael Lawson is a highly motivated Physical Education Teacher with over 10 years of experience in promoting health and fitness. Currently teaching at PQR Academy, Chris is known for his energetic and engaging classes that encourage students to adopt a healthy lifestyle. His course on fitness and nutrition has been particularly successful, helping students understand the importance of physical activity and proper diet. Chris's commitment to student well-being extends beyond the classroom, as he also leads several extracurricular sports teams.",
+    "youtube_link": "https://www.youtube.com/embed/jEIPSNXqIXA"
+  },
+  {
+    "id": 8,
+    "name": "Lindsay Ferguson",
+    "job_title": "Music Teacher",
+    "brief": "Lindsay is a passionate music teacher, specializing in vocal training and musical theory.",
+    "topics": [
+      "Vocal Training",
+      "Music Theory",
+      "Composition",
+      "Piano"
+    ],
+    "about": "Lindsay Ferguson is an accomplished Music Teacher with over 12 years of experience in vocal training and musical theory. She currently teaches at STU Conservatory, where her dedication to music education has inspired many students to excel in their musical pursuits. Sarah's course on vocal techniques is particularly popular, offering students a comprehensive understanding of how to develop and refine their singing abilities. Her passion for music and commitment to her students' success make her a cherished educator.",
+    "youtube_link": "https://www.youtube.com/embed/yob1spslc7o"
+  },
+  {
+    "id": 9,
+    "name": "Tobias Funke",
+    "job_title": "Physics Teacher",
+    "brief": "Tobias brings the world of physics to life with engaging lessons on mechanics and electromagnetism.",
+    "topics": [
+      "Mechanics",
+      "Electromagnetism",
+      "Quantum Physics",
+      "Astrophysics"
+    ],
+    "about": "Tobias Funke is a seasoned Physics Teacher with over 15 years of experience in teaching complex scientific concepts in an accessible way. Currently teaching at VWX Science Academy, Paul is known for his innovative and engaging lessons that make physics exciting and understandable. His course on mechanics and electromagnetism has been widely acclaimed, helping students grasp these challenging topics with ease. Paul's dedication to his students' success and his passion for physics make him a standout educator.",
+    "youtube_link": "https://www.youtube.com/embed/tmNXKqeUtJM"
+  },
+  {
+    "id": 10,
+    "name": "Byron Byron",
+    "job_title": "Chemistry Teacher",
+    "brief": "Byron specializes in organic chemistry, making complex chemical processes understandable for students.",
+    "topics": [
+      "Organic Chemistry",
+      "Biochemistry",
+      "Chemical Reactions",
+      "Laboratory Techniques"
+    ],
+    "about": "Byron Byron is a dedicated Chemistry Teacher with over 9 years of experience in teaching organic chemistry and biochemistry. She currently teaches at YZ High School, where she is known for her ability to make complex chemical processes accessible and interesting for students. Anna's course on organic chemistry has been particularly successful, helping students achieve high levels of understanding and performance in this challenging subject. Her commitment to education and her deep knowledge of chemistry make her a respected and effective teacher.",
+    "youtube_link": "https://www.youtube.com/embed/UL1jmJaUkaQ?list=PL8dPuuaLjXtPHzzYuWy6fYEaX9mQQ8oGr"
+  },
+  {
+    "id": 11,
+    "name": "George Edwards",
+    "job_title": "Economics Teacher",
+    "brief": "George makes economics engaging with his focus on macroeconomics and financial literacy.",
+    "topics": [
+      "Macroeconomics",
+      "Microeconomics",
+      "Financial Literacy",
+      "Economic Theory"
+    ],
+    "about": "George Edwards is a knowledgeable Economics Teacher with over 14 years of experience in teaching macroeconomics, microeconomics, and financial literacy. He currently works at ABC High School, where his engaging and practical approach to economics has made him a favorite among students. Richard's course on financial literacy is particularly notable, providing students with the skills they need to navigate the complex world of personal finance. His dedication to student success and his expertise in economics make him a valuable asset to the school.",
+    "youtube_link": "https://www.youtube.com/embed/9I_-ADGrKQo?list=PL8dPuuaLjXtPNZwz5_o_5uirJ8gQXnhEO"
+  },
+  {
+    "id": 12,
+    "name": "Rachel Howell",
+    "job_title": "Foreign Language Teacher",
+    "brief": "Rachel teaches Spanish and French, helping students achieve fluency through immersive learning.",
+    "topics": [
+      "Spanish",
+      "French",
+      "Cultural Studies",
+      "Linguistics"
+    ],
+    "about": "Rachel Howell is a skilled Foreign Language Teacher with over 11 years of experience in teaching Spanish and French. She currently teaches at DEF Language Academy, where she is known for her immersive and interactive teaching methods. Karen's course on achieving fluency in Spanish has received high praise for its effectiveness in helping students quickly gain proficiency in the language. Her passion for languages and her commitment to providing an engaging learning experience make her an exceptional educator.",
+    "youtube_link": "https://www.youtube.com/embed/s-NA49YD5CQ"
+  }
+]
