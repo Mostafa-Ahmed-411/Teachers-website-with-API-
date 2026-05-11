@@ -1,181 +1,238 @@
 console.log("EARL Drsh");
 
+/* -------------------------------------------------------------------------- */
+/*                                  Constants                                 */
+/* -------------------------------------------------------------------------- */
 
-/* -------- select page numer  from url {if  frist time open site (page number = 1 )} -------- */
+const API_URL = "https://reqres.in/api/users";
 
-(function()
-{
-    let current_Url = new URL(window.location.href); 
-    console.log("current_Url  : " + current_Url);
-    let current_Page = current_Url.searchParams.get("page");
-    
-    let paginationBtn = document.querySelectorAll("#pagination-bar .btn")
+const teachersContainer = document.getElementById("show-teachers-list");
+const paginationButtons = document.querySelectorAll("#pagination-bar .btn");
+const scrollToUpButton = document.getElementById("up-icon");
 
-    if(current_Page == null)
-    {
-        window.location.href = `index.html?`+ `page=${1}`
-        fetch_Page(1)
-        console.log(current_Page);
-    }else{
-        paginationBtn[current_Page-1].classList.add("pagination-button");
-        fetch_Page(current_Page)
-        console.log(current_Page);
-    }
-})()
+/* -------------------------------------------------------------------------- */
+/*                              Initialize App                                */
+/* -------------------------------------------------------------------------- */
 
+document.addEventListener("DOMContentLoaded", () => {
+  initializePage();
+  initializePagination();
+  initializeCounters();
+  initializeScrollToTop();
+});
 
+/* -------------------------------------------------------------------------- */
+/*                              Initialize Page                               */
+/* -------------------------------------------------------------------------- */
 
-/* ------------------------- when use pagination bar ------------------------ */
+async function initializePage() {
+  const currentPage = getCurrentPage();
 
-let paginationBtn = document.querySelectorAll("#pagination-bar .btn")
-for (let i = 0; i < paginationBtn.length; i++) {
-    paginationBtn[i].addEventListener("click" , (e)=>{
-        let pageNumber = e.target.value
-        console.log(pageNumber);
+  setActivePaginationButton(currentPage);
 
-        fetch_Page(pageNumber)
-        window.location.href = `index.html?`+ `page=${pageNumber}`
-
-    })
+  await fetchPage(currentPage);
 }
 
+/* -------------------------------------------------------------------------- */
+/*                               URL Functions                                */
+/* -------------------------------------------------------------------------- */
 
-/* -------- fetch_Page function  fetch data for list of teacher from api  ------- */
-/* -------- fetch_Page function  fetch custom data for list of teacher from json file  ------- */
+function getCurrentPage() {
+  const currentUrl = new URL(window.location.href);
 
-async function fetch_Page(pageNumber){
-
-    async function fetch_All_Teachers(pageNumber)
-        {
-            let response = await fetch(`https://reqres.in/api/users?page=${pageNumber}`);
-            let responseResult = await response.json()
-            return responseResult
-        }
-/* ------------------------- */
-async function fetch_Custom_data()
-{
-    let response = await fetch(`Data.json`);
-    let responseResult = await response.json()
-    return responseResult
-}
-/* ------------------------- */ /* call  fetch_All_Teachers , fetch_Custom_data , display_List_Teachers   function */
-    (async function()
-        {
-            let All_Teachers_Result = await fetch_All_Teachers(pageNumber)
-            let custom_data_Result = await fetch_Custom_data ()
-            display_List_Teachers(All_Teachers_Result , pageNumber ,custom_data_Result )
-        })()
+  return Number(currentUrl.searchParams.get("page")) || 1;
 }
 
-/* ---------------------------- fetch_custom_data  function --------------------------- */
+function updatePageInUrl(pageNumber) {
+  const url = new URL(window.location.href);
 
-    
-    /* ---------------------- display_List_Teachers function ---------------------- */
-    function display_List_Teachers(responseResult , pageNumber , custom_data_Result)
-    {
-        var cartona = ``
-        for (let i = 0; i < responseResult.per_page; i++) {
-            cartona += `
-            <div class="col-md-4 item">
-            <div class="item-content">
-            
+  url.searchParams.set("page", pageNumber);
+
+  window.history.replaceState({}, "", url);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            Pagination Functions                            */
+/* -------------------------------------------------------------------------- */
+
+function initializePagination() {
+  paginationButtons.forEach((button) => {
+    button.addEventListener("click", async (event) => {
+      const pageNumber = Number(event.target.value);
+
+      updatePageInUrl(pageNumber);
+
+      setActivePaginationButton(pageNumber);
+
+      await fetchPage(pageNumber);
+    });
+  });
+}
+
+function setActivePaginationButton(pageNumber) {
+  paginationButtons.forEach((button) => {
+    button.classList.remove("pagination-button");
+  });
+
+  paginationButtons[pageNumber - 1]?.classList.add(
+    "pagination-button"
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Fetch Functions                              */
+/* -------------------------------------------------------------------------- */
+
+async function fetchPage(pageNumber) {
+  try {
+    const [teachersResponse, customData] = await Promise.all([
+      fetchAllTeachers(pageNumber),
+      fetchCustomData(),
+    ]);
+
+    displayTeachers(teachersResponse, pageNumber, customData);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
+
+async function fetchAllTeachers(pageNumber) {
+  const response = await fetch(`${API_URL}?page=${pageNumber}`, {
+    headers: {
+      "x-api-key": "free_user_3DYX2I0NYIxJQRpwctKlTF994Be",
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch teachers");
+  }
+
+  return await response.json();
+}
+
+async function fetchCustomData() {
+  const response = await fetch("Data.json");
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch custom data");
+  }
+
+  return await response.json();
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Display Teachers                              */
+/* -------------------------------------------------------------------------- */
+
+function displayTeachers(responseData, pageNumber, customData) {
+  const { data: teachers, per_page } = responseData;
+
+  const teachersHTML = teachers
+    .map((teacher, index) => {
+      const teacherIndex = index + per_page * (pageNumber - 1);
+
+      return `
+        <div class="col-md-4 item" data-id="${teacherIndex + 1}">
+          <div class="item-content">
+
             <div class="item-up">
-                <figure>
-                <img src="${responseResult.data[i].avatar}" alt="${responseResult.data[i].first_name + " " + responseResult.data[i].last_name}">
-                </figure>
-                <h2>${responseResult.data[i].first_name + " " + responseResult.data[i].last_name}</h2>
-                <p>${custom_data_Result[i + (responseResult.per_page * (pageNumber-1))].brief}</p>
-                    
-            </div>
-                    
-                    <div class="item-down">
-                    <p>start now</p>
-                    <p><i class="fa-solid fa-arrow-right"></i></p>
-                    </div>
-                    </div>
-                    </div>
-                    ` 
-                    document.getElementById("show-teachers-list").innerHTML= cartona
-                }
-                select_Teacher(pageNumber)
-            }
-            
-// <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestias enim ea ut aliquam optio nihil inventore voluptatem tempore. Deserunt, corporis!.</p>
-/* ---------------- select_Teacher function to send id to url --------------- */
+              <figure>
+                <img 
+                  src="${teacher.avatar}" 
+                  alt="${teacher.first_name} ${teacher.last_name}"
+                >
+              </figure>
 
-function select_Teacher(pageNumber)
-{
-    console.log("pageNumber  :  " + pageNumber);
-    let click_Specific_Teacher = document.querySelectorAll("#teacher .item")
-    
-    for (let index = 0; index < click_Specific_Teacher.length;  index++) {
-        
-        click_Specific_Teacher[index].addEventListener("click" , (e)=>{
-        
-            let current_Url = new URL(window.location.href); 
-            let what_Current_Page = current_Url.searchParams.get("page");
-            while (what_Current_Page) {
-                let id = (index +1) + (6 *( what_Current_Page - 1)) 
-                window.location.href = `teacher.html?id=${id}`;
-                fetch_Id( id)
-            }
-        })
-    }
+              <h2>${teacher.first_name} ${teacher.last_name}</h2>
+
+              <p>
+                ${customData[teacherIndex]?.brief || ""}
+              </p>
+            </div>
+
+            <div class="item-down">
+              <p>Start Now</p>
+              <p>
+                <i class="fa-solid fa-arrow-right"></i>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  teachersContainer.innerHTML = teachersHTML;
+
+  initializeTeacherSelection();
 }
 
-/* ----------------------- statistics Counter Function ---------------------- */
+/* -------------------------------------------------------------------------- */
+/*                            Teacher Selection                               */
+/* -------------------------------------------------------------------------- */
 
-(function(){
-    let course_Counter = document.getElementById("course-counter")   // 265
-    let teacher_Counter = document.getElementById("teacher-counter") // 52
-    let student_Counter =  document.getElementById("student-counter") // 10568
+function initializeTeacherSelection() {
+  const teacherItems = document.querySelectorAll("#teacher .item");
 
-    function runCounter(id , targetValue , duration_s)
-    {
-        let counts = setInterval(updated);
-        let start_piont = 0; 
-        let incrementValue = targetValue / (duration_s * 100) 
-        function updated() {
+  teacherItems.forEach((teacher) => {
+    teacher.addEventListener("click", () => {
+      const teacherId = teacher.dataset.id;
 
-            start_piont += incrementValue
-            id.innerHTML = Math.floor(start_piont);
-            if (start_piont >= targetValue) {
-                clearInterval(counts);
-            }
-        }
+      window.location.href = `teacher.html?id=${teacherId}`;
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Counter Section                              */
+/* -------------------------------------------------------------------------- */
+
+function initializeCounters() {
+  runCounter("course-counter", 265, 4000);
+  runCounter("teacher-counter", 52, 4000);
+  runCounter("student-counter", 10568, 6000);
+}
+
+function runCounter(elementId, targetValue, duration) {
+  const element = document.getElementById(elementId);
+
+  let startValue = 0;
+
+  const increment = targetValue / (duration / 10);
+
+  const counter = setInterval(() => {
+    startValue += increment;
+
+    element.textContent = Math.floor(startValue);
+
+    if (startValue >= targetValue) {
+      element.textContent = targetValue;
+
+      clearInterval(counter);
     }
+  }, 10);
+}
 
-    runCounter(course_Counter , 265 , 4)
-    runCounter(teacher_Counter , 52 , 4)
-    runCounter(student_Counter , 10568 , 6)
+/* -------------------------------------------------------------------------- */
+/*                              Scroll To Top                                 */
+/* -------------------------------------------------------------------------- */
 
-})()
+function initializeScrollToTop() {
+  window.addEventListener("scroll", toggleScrollButton);
 
+  scrollToUpButton.addEventListener("click", scrollToTop);
+}
 
-/* ------------------------------ scroll_To_Up ------------------------------ */
-let scroll_To_Up = document.getElementById("up-icon")
+function toggleScrollButton() {
+  scrollToUpButton.style.display =
+    window.scrollY >= 100 ? "block" : "none";
+}
 
-window.addEventListener("scroll", ()=>{
-    if(scrollY >= 100)
-    {
-        scroll_To_Up.style.display = 'block' ;
-    }else{
-        scroll_To_Up.style.display = 'none' ;
-    }
-})
-
-scroll_To_Up.addEventListener("click", ()=>{
-    scroll({
-        left : 0,
-        top : 0,
-        behavior : "smooth",
-    })
-})
-
-
-// let current_Url = new URL(window.location.href); 
-// console.log("current_Url  : " + current_Url);
-// let current_Page = current_Url.searchParams.get("page");
-// console.log(current_Page);
-// let paginationBtns = document.querySelectorAll("#pagination-bar .btn")
-// paginationBtns[current_Page-1].classList.add("pagination-button");
+function scrollToTop() {
+  window.scroll({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+}
