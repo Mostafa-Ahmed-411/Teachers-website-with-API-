@@ -74,9 +74,7 @@ function setActivePaginationButton(pageNumber) {
     button.classList.remove("pagination-button");
   });
 
-  paginationButtons[pageNumber - 1]?.classList.add(
-    "pagination-button"
-  );
+  paginationButtons[pageNumber - 1]?.classList.add("pagination-button");
 }
 
 /* -------------------------------------------------------------------------- */
@@ -106,8 +104,8 @@ async function fetchAllTeachers(pageNumber) {
   if (!response.ok) {
     throw new Error("Failed to fetch teachers");
   }
-
-  return await response.json();
+  let data = await response.json();
+  return data;
 }
 
 async function fetchCustomData() {
@@ -138,7 +136,8 @@ function displayTeachers(responseData, pageNumber, customData) {
             <div class="item-up">
               <figure>
                 <img 
-                  src="${teacher.avatar}" 
+                  src="../imgs/1-image.jpg"
+                 
                   alt="${teacher.first_name} ${teacher.last_name}"
                 >
               </figure>
@@ -225,8 +224,7 @@ function initializeScrollToTop() {
 }
 
 function toggleScrollButton() {
-  scrollToUpButton.style.display =
-    window.scrollY >= 100 ? "block" : "none";
+  scrollToUpButton.style.display = window.scrollY >= 100 ? "block" : "none";
 }
 
 function scrollToTop() {
