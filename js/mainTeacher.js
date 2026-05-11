@@ -1,133 +1,80 @@
-console.log("EARL Drsh");
+/* -------- جلب ID المدرس من الرابط (URL) -------- */
+(function () {
+  const current_Url = new URL(window.location.href);
+  const selected_Id = current_Url.searchParams.get("id");
 
-/* -------- select teacher id from url {i have passed from page one} -------- */
-(function(){
-    var current_Url = new URL(window.location.href); 
-    var selected_Id = current_Url.searchParams.get("id");
-    // console.log(window.location.href);
-    console.log("selected_Id for teacher :  >> " + selected_Id);
+  if (selected_Id) {
+    startFetching(selected_Id);
+  }
+})();
 
-/* ----- */ fetch_Id(selected_Id) /* ------ */
-})()
+async function startFetching(selected_Id) {
+  try {
+    // جلب بيانات المدرس من الـ API
+    let response = await fetch(`https://reqres.in/api/users/${selected_Id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": "free_user_3DYX2I0NYIxJQRpwctKlTF994Be",
+        },
+      });
 
-
-/* -------- fetch_Id function  fetch data for single teacher from api ------- */
-
-function fetch_Id(selected_Id){
-    async function single_Teacher(selected_Id)
-    {
-        let response = await fetch(`https://reqres.in/api/users?id=${selected_Id}`)
-        let responseResult = await response.json();
-        return responseResult
+    if (!response.ok) {
+      throw new Error("Failed to fetch teachers");
     }
+    let teacherApiData = await response.json();
+    console.log("Teacher API Data:", teacherApiData);
+    // جلب البيانات الإضافية من ملف JSON
+    let responseJson = await fetch(`Data.json`);
+    let customData = await responseJson.json();
 
-/* ------------------------------------ */
-
-async function fetch_Custom_data()
-    {
-        let response = await fetch(`Data.json`);
-        let responseResult = await response.json()
-        return responseResult
-    }
-/* ------------------------------------ */ /* call  fetch_All_Teachers , fetch_Custom_data , display_List_Teachers   function */
-
-    (async function()
-    {
-        let single_Teacher_Result = await single_Teacher(selected_Id)
-        let custom_data_Result = await fetch_Custom_data ()
-        display_Teacher_data(single_Teacher_Result.data , custom_data_Result  , selected_Id )
-    })() 
+    // تمرير البيانات للدالة التي تعرضها في الصفحة
+    display_Teacher_data(teacherApiData.data, customData, selected_Id);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
 }
 
+function display_Teacher_data(apiData, customData, selected_Id) {
+  // البحث عن بيانات المدرس في ملف الـ JSON باستخدام الـ ID
+  // ملاحظة: الـ id في المصفوفة يبدأ من 0، لذا نستخدم selected_Id - 1
+  const extraInfo = customData[selected_Id - 1];
 
-/* ---------------------- display_Teacher_data function --------------------- */
-
-function display_Teacher_data(single_Teacher_Result_Data  , custom_data_Result_Data , selected_Id){
-    var cartona = `
-    <div class="container" id="show-single-teacher-data">
-    <h1 id="teacher-name">${single_Teacher_Result_Data.first_name + " " +single_Teacher_Result_Data.last_name}</h1>
-    <div class="row ">
-        <div class="col-md-4 img teacher">
-            <figure>
-                <img src="${single_Teacher_Result_Data.avatar}" alt="${single_Teacher_Result_Data.first_name + " " +single_Teacher_Result_Data.last_name}">
-            </figure>
-        </div>
-        
-        <div class="offset-md-1 col-md-7 teacher ">
-            <div class="about">
-                <p class="pt-3 pt-md-0">
-                    ${custom_data_Result_Data[selected_Id-1].about}
-                </p>
+  const cartona = `
+    <div class="container">
+        <h1 id="teacher-name">${apiData.first_name } ${apiData.last_name}</h1>
+        <div class="row">
+            <div class="col-md-4 img teacher">
+                <figure>
+                    <img src="../imgs/1-image.jpg" class="w-100" alt="${apiData.first_name}">
+                </figure>
+            </div>
+            
+            <div class="offset-md-1 col-md-7 teacher">
+                <div class="about">
+                    <p class="pt-3 pt-md-0">${extraInfo ? extraInfo.about : "No info available."}</p>
                 </div>
-        <div class="info d-md-flex d-grid">
-            <ul class="bg-warning0">
-                <li><span>name :</span>${single_Teacher_Result_Data.first_name + " " +single_Teacher_Result_Data.last_name} </li>
-                <li><span>ID :</span> 1 </li>
-            </ul>
-            <ul class="bg-info0">
-                <li><span>job title :</span> ${custom_data_Result_Data[selected_Id-1].job_title} </li>
-                <li><span>e-mail :</span> <a href="${single_Teacher_Result_Data.email}">${single_Teacher_Result_Data.email}</a> </li>
-            </ul>
-        </div>
+                <div class="info d-md-flex d-grid gap-3">
+                    <ul>
+                        <li><span>Name:</span> ${apiData.first_name} ${apiData.last_name}</li>
+                        <li><span>ID:</span> ${selected_Id}</li>
+                    </ul>
+                    <ul>
+                        <li><span>Job Title:</span> ${extraInfo ? extraInfo.job_title : "Teacher"}</li>
+                        <li><span>E-mail:</span> <a href="mailto:${apiData.email}">${apiData.email}</a></li>
+                    </ul>
+                </div>
 
-            <div class="video">
-                <h5>Get an overview of this topic</h5>
-                <iframe id="custom-video"
-                src="${custom_data_Result_Data[selected_Id-1].youtube_link}" 
-                title="Teaching Methods for Inspiring the Students of the Future | Joe Ruhl | TEDxLafayette"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen>
-            </iframe>
+                <div class="video mt-4">
+                    <h5>Get an overview of this topic</h5>
+                    <iframe id="custom-video" width="100%" height="315"
+                        src="${extraInfo ? extraInfo.youtube_link : ""}" 
+                        frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
             </div>
         </div>
-</div>
-</div>
-    `
-    document.getElementById("show-single-teacher-data").innerHTML = cartona
+    </div>`;
+
+  document.getElementById("show-single-teacher-data").innerHTML = cartona;
 }
-
-/* ------------------------------ scroll_To_Up ------------------------------ */
-let scroll_To_Up = document.getElementById("up-icon")
-
-window.addEventListener("scroll", ()=>{
-    if(scrollY >= 100)
-    {
-        scroll_To_Up.style.display = 'block' ;
-        console.log("ok");
-    }else{
-        scroll_To_Up.style.display = 'none' ;
-    }
-})
-
-scroll_To_Up.addEventListener("click", ()=>{
-    scroll({
-        left : 0,
-        top : 0,
-        behavior : "smooth",
-    })
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
